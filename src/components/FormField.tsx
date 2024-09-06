@@ -9,7 +9,7 @@ interface FormFieldProps {
 export default function FormField(props: FormFieldProps) {
     return (
         <div className="flex imc-forms-input">
-            <label className="w-[60px]">{props.label}</label>
+            <label className="imc-forms-label">{props.label}</label>
             <input
                 className="border p-1"
                 type="text"
