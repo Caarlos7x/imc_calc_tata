@@ -10,7 +10,7 @@ export default function CalcImc() {
 
     function calculateImc() {
         const weightNum = parseFloat(weight);
-        const heightNum = parseInt(height, 10) / 100; // Convertendo cm para metros
+        const heightNum = parseInt(height, 10) / 100;
         if (isNaN(weightNum) || isNaN(heightNum) || heightNum === 0) {
             setImc(0);
             return;
@@ -23,7 +23,7 @@ export default function CalcImc() {
         if (imc === 0) {
             return "Preencha os campos acima";
         } else if (imc < 18.5) {
-            return "mago réi";
+            return "mago véi";
         } else if (imc >= 18.5 && imc < 24.9) {
             return "normal";
         } else if (imc >= 25.0 && imc < 29.9) {
