@@ -1,7 +1,9 @@
+import React from 'react';
+
 interface FormFieldProps {
     label: string;
-    state: number;
-    funcState: React.Dispatch<React.SetStateAction<number>>;
+    state: string;
+    funcState: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export default function FormField(props: FormFieldProps) {
@@ -10,9 +12,9 @@ export default function FormField(props: FormFieldProps) {
             <label className="w-[60px]">{props.label}</label>
             <input
                 className="border p-1"
-                type="number"
+                type="text"
                 value={props.state}
-                onChange={(evt) => props.funcState(Number(evt.target.value))}
+                onChange={(evt) => props.funcState(evt.target.value)}
             />
         </div>
     );

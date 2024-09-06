@@ -4,17 +4,22 @@ import ImcTable from "@/components/ImcTable";
 import ShimmerButton from "@/components/magicui/shimmer-button";
 
 export default function CalcImc() {
-
-    const [weight, setWeight] = useState<number>(0);
-    const [height, setHeight] = useState<number>(0);
+    const [weight, setWeight] = useState<string>('');
+    const [height, setHeight] = useState<string>('');
     const [imc, setImc] = useState<number>(0);
 
     function calculateImc() {
-        const result = Number((weight / (height * height)).toFixed(2));
+        const weightNum = parseFloat(weight);
+        const heightNum = parseFloat(height);
+        if (isNaN(weightNum) || isNaN(heightNum) || heightNum === 0) {
+            setImc(0);
+            return;
+        }
+        const result = Number((weightNum / (heightNum * heightNum)).toFixed(2));
         setImc(result);
     }
 
-    const alert = () => {
+    const getAlertMessage = () => {
         if (imc === 0) {
             return "Preencha os campos acima";
         } else if (imc < 18.5) {
@@ -43,7 +48,7 @@ export default function CalcImc() {
                         Calcular
                     </span>
                 </ShimmerButton>
-                <p className="imc-calc-result">Resultado: {imc} <br />  {alert()}!</p>
+                <p className="imc-calc-result">Resultado: {imc} <br />  {getAlertMessage()}!</p>
                 <ImcTable />
             </div>
         </section>
