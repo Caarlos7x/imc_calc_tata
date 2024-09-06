@@ -10,15 +10,14 @@ export default function CalcImc() {
     const [imc, setImc] = useState<number>(0);
 
     function calculateImc() {
-        let result = Number((weight / (height * height)).toFixed(2));
+        const result = Number((weight / (height * height)).toFixed(2));
         setImc(result);
     }
 
     const alert = () => {
         if (imc === 0) {
             return "Preencha os campos acima";
-        } else
-        if (imc < 18.5) {
+        } else if (imc < 18.5) {
             return "mago réi";
         } else if (imc >= 18.5 && imc < 24.9) {
             return "normal";
@@ -33,7 +32,6 @@ export default function CalcImc() {
         }
     }
 
-
     return (
         <section className="imc-calc">
             <div className="calculator">
@@ -45,10 +43,9 @@ export default function CalcImc() {
                         Calcular
                     </span>
                 </ShimmerButton>
-                {/* <button className="imc-calc-btn" onClick={calculateImc}>Calcular</button> */}
                 <p className="imc-calc-result">Resultado: {imc} <br />  {alert()}!</p>
                 <ImcTable />
             </div>
         </section>
-    )
+    );
 }
