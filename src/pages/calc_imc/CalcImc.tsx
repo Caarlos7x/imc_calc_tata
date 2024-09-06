@@ -10,7 +10,7 @@ export default function CalcImc() {
 
     function calculateImc() {
         const weightNum = parseFloat(weight);
-        const heightNum = parseFloat(height);
+        const heightNum = parseInt(height, 10) / 100; // Convertendo cm para metros
         if (isNaN(weightNum) || isNaN(heightNum) || heightNum === 0) {
             setImc(0);
             return;
@@ -42,7 +42,7 @@ export default function CalcImc() {
             <div className="calculator">
                 <h1 className="imc-calc-title">Cálculo do IMC</h1>
                 <FormField label="Peso" state={weight} funcState={setWeight} />
-                <FormField label="Altura" state={height} funcState={setHeight} />
+                <FormField label="Altura (cm)" state={height} funcState={setHeight} />
                 <ShimmerButton className="shadow-2xl imc-calc-btn" onClick={calculateImc}>
                     <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
                         Calcular
