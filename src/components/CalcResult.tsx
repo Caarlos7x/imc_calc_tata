@@ -1,6 +1,5 @@
 import React from "react";
 import { Dialog } from 'primereact/dialog';
-import { svg } from "framer-motion/client";
 
 interface CalcResultProps {
     imc: number;
